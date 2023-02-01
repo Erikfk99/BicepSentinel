@@ -1,0 +1,359 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.14.6.61914",
+      "templateHash": "13144238399183465884"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "resourceGroupName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2022-09-01",
+      "name": "[parameters('resourceGroupName')]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "module_sentinel",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[reference(subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName')), '2022-09-01', 'full').location]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.14.6.61914",
+              "templateHash": "9408121734899789989"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "workspaceName": "Sentinel-test-lab"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.OperationalInsights/workspaces",
+              "apiVersion": "2020-10-01",
+              "name": "[variables('workspaceName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "sku": {
+                  "name": "PerGB2018"
+                },
+                "retentionInDays": 60
+              }
+            },
+            {
+              "type": "Microsoft.OperationsManagement/solutions",
+              "apiVersion": "2015-11-01-preview",
+              "name": "[format('SecurityInsights({0})', variables('workspaceName'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName'))]"
+              },
+              "plan": {
+                "publisher": "Microsoft",
+                "product": "OMSGallery/SecurityInsights",
+                "name": "SecurityInsights(sentinel-test-lab)",
+                "promotionCode": ""
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces', variables('workspaceName'))]"
+              ]
+            }
+          ],
+          "outputs": {
+            "WorkspaceName": {
+              "type": "string",
+              "value": "[variables('workspaceName')]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "module_analytics",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "workspaceName": {
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel'), '2020-10-01').outputs.WorkspaceName.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.14.6.61914",
+              "templateHash": "2734318340574809695"
+            }
+          },
+          "parameters": {
+            "workspaceName": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "analytics_demoRule",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "10588334753756287867"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    },
+                    "ruleEnabled": {
+                      "type": "bool",
+                      "defaultValue": true
+                    },
+                    "queryFrequency": {
+                      "type": "string",
+                      "defaultValue": "PT5M"
+                    },
+                    "queryPeriod": {
+                      "type": "string",
+                      "defaultValue": "PT24H"
+                    },
+                    "severity": {
+                      "type": "string",
+                      "defaultValue": "High",
+                      "allowedValues": [
+                        "High",
+                        "Medium",
+                        "Low",
+                        "Informational"
+                      ]
+                    },
+                    "suppressionEnabled": {
+                      "type": "bool",
+                      "defaultValue": false
+                    },
+                    "suppressionDuration": {
+                      "type": "string",
+                      "defaultValue": "PT1H"
+                    },
+                    "triggerOperator": {
+                      "type": "string",
+                      "defaultValue": "GreaterThan",
+                      "allowedValues": [
+                        "Equal",
+                        "GreaterThan",
+                        "LessThan",
+                        "NotEqual"
+                      ]
+                    },
+                    "triggerThreshold": {
+                      "type": "int",
+                      "defaultValue": 0
+                    }
+                  },
+                  "variables": {
+                    "ruleDisplayName": "BICEP TEST ALERT",
+                    "ruleDescription": "BICEP test alert",
+                    "ruleQuery": "SecurityAlert | take 10",
+                    "tactics": [
+                      "InitialAccess",
+                      "Persistence"
+                    ]
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/alertRules",
+                      "apiVersion": "2020-01-01",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'), variables('ruleQuery'))]",
+                      "kind": "Scheduled",
+                      "properties": {
+                        "description": "[variables('ruleDescription')]",
+                        "displayName": "[variables('ruleDisplayName')]",
+                        "enabled": "[parameters('ruleEnabled')]",
+                        "query": "[variables('ruleQuery')]",
+                        "queryFrequency": "[parameters('queryFrequency')]",
+                        "queryPeriod": "[parameters('queryPeriod')]",
+                        "severity": "[parameters('severity')]",
+                        "suppressionDuration": "[parameters('suppressionDuration')]",
+                        "suppressionEnabled": "[parameters('suppressionEnabled')]",
+                        "tactics": "[variables('tactics')]",
+                        "triggerOperator": "[parameters('triggerOperator')]",
+                        "triggerThreshold": "[parameters('triggerThreshold')]"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "analytics_demoRule2",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "4288071269367308820"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    },
+                    "ruleEnabled": {
+                      "type": "bool",
+                      "defaultValue": true
+                    },
+                    "queryFrequency": {
+                      "type": "string",
+                      "defaultValue": "PT5M"
+                    },
+                    "queryPeriod": {
+                      "type": "string",
+                      "defaultValue": "PT24H"
+                    },
+                    "severity": {
+                      "type": "string",
+                      "defaultValue": "High",
+                      "allowedValues": [
+                        "High",
+                        "Medium",
+                        "Low",
+                        "Informational"
+                      ]
+                    },
+                    "suppressionEnabled": {
+                      "type": "bool",
+                      "defaultValue": false
+                    },
+                    "suppressionDuration": {
+                      "type": "string",
+                      "defaultValue": "PT1H"
+                    },
+                    "triggerOperator": {
+                      "type": "string",
+                      "defaultValue": "GreaterThan",
+                      "allowedValues": [
+                        "Equal",
+                        "GreaterThan",
+                        "LessThan",
+                        "NotEqual"
+                      ]
+                    },
+                    "triggerThreshold": {
+                      "type": "int",
+                      "defaultValue": 0
+                    }
+                  },
+                  "variables": {
+                    "ruleDisplayName": "BICEP Erik",
+                    "ruleDescription": "BICEP Erik",
+                    "ruleQuery": "SecurityAlert | take 100",
+                    "tactics": [
+                      "InitialAccess",
+                      "Persistence"
+                    ]
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/alertRules",
+                      "apiVersion": "2020-01-01",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'), variables('ruleQuery'))]",
+                      "kind": "Scheduled",
+                      "properties": {
+                        "description": "[variables('ruleDescription')]",
+                        "displayName": "[variables('ruleDisplayName')]",
+                        "enabled": "[parameters('ruleEnabled')]",
+                        "query": "[variables('ruleQuery')]",
+                        "queryFrequency": "[parameters('queryFrequency')]",
+                        "queryPeriod": "[parameters('queryPeriod')]",
+                        "severity": "[parameters('severity')]",
+                        "suppressionDuration": "[parameters('suppressionDuration')]",
+                        "suppressionEnabled": "[parameters('suppressionEnabled')]",
+                        "tactics": "[variables('tactics')]",
+                        "triggerOperator": "[parameters('triggerOperator')]",
+                        "triggerThreshold": "[parameters('triggerThreshold')]"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel')]"
+      ]
+    }
+  ]
+}
