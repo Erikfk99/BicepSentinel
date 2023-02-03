@@ -24,3 +24,10 @@ module demoRule3 './analytics/demoRule2.bicep' = {
     workspaceName: workspaceName
   }
 }
+module analytics_temp './analytics/analyticTemplate.bicep' = {
+  name: 'analytics_temp'
+  params: {
+    workspaceName: workspaceName
+  }
+}
+

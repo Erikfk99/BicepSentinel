@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.6.61914",
-      "templateHash": "1154014403537799920"
+      "templateHash": "11682913585838223868"
     }
   },
   "parameters": {
@@ -122,7 +122,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.6.61914",
-              "templateHash": "3466407324999014514"
+              "templateHash": "114193123878161186"
             }
           },
           "parameters": {
@@ -454,6 +454,47 @@
                   ]
                 }
               }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "analytics_temp",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "14073181566461776965"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/alertRules",
+                      "apiVersion": "2020-01-01",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "Exchange SSRF Autodiscover ProxyShell - Detection",
+                      "kind": "Fusion"
+                    }
+                  ]
+                }
+              }
             }
           ]
         }
@@ -485,7 +526,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.6.61914",
-              "templateHash": "9288704689904506962"
+              "templateHash": "12789143112951751865"
             }
           },
           "parameters": {
@@ -498,6 +539,47 @@
               "type": "Microsoft.Resources/deployments",
               "apiVersion": "2020-10-01",
               "name": "symbolicname",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "17712509777606418486"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/dataConnectors",
+                      "apiVersion": "2022-12-01-preview",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "AzureActivityLog",
+                      "kind": "AzureActiveDirectory"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "AZACTlog",
               "properties": {
                 "expressionEvaluationOptions": {
                   "scope": "inner"

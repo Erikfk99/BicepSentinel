@@ -2,9 +2,8 @@ param workspaceName string
 
 
 
-
-module demoConnector './connectors/connector1.bicep' = {
-  name: 'symbolicname'
+module demo2 './connectors/AzureActiveDirectory.bicep' = {
+  name: 'office365'
   params: {
     workspaceName: workspaceName
   }
