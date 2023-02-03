@@ -8,6 +8,8 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   location: location
 }
 
+
+
 //Deploy log anaytics workspace
 // and Sentinel solution
 module Sentinel './modules/sentinel.bicep' = {
@@ -27,4 +29,12 @@ module AnalyticRules './modules/analytics.bicep' = {
     // roleAssignmentId: Sentinel.outputs.roleAssignmentId
   }
   
+}
+
+module Connectors './modules/connectors.bicep' = {
+  name: 'demoConnector'
+  scope: rg
+  params:{
+    workspaceName: Sentinel.outputs.WorkspaceName
+  }
 }

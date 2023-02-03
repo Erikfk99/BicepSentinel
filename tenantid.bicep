@@ -1,0 +1,1 @@
+output subscriptionOutput object = subscription().tenantId

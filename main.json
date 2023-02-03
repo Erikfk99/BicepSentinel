@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.6.61914",
-      "templateHash": "17822719659696650473"
+      "templateHash": "1154014403537799920"
     }
   },
   "parameters": {
@@ -449,6 +449,100 @@
                         "tactics": "[variables('tactics')]",
                         "triggerOperator": "[parameters('triggerOperator')]",
                         "triggerThreshold": "[parameters('triggerThreshold')]"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', parameters('resourceGroupName'))]",
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "demoConnector",
+      "resourceGroup": "[parameters('resourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "workspaceName": {
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel'), '2020-10-01').outputs.WorkspaceName.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.14.6.61914",
+              "templateHash": "9288704689904506962"
+            }
+          },
+          "parameters": {
+            "workspaceName": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "symbolicname",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "5989970800844404449"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/dataConnectors",
+                      "apiVersion": "2022-12-01-preview",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "Office365",
+                      "kind": "Office365",
+                      "properties": {
+                        "dataTypes": {
+                          "sharePoint": {
+                            "state": "enabled"
+                          },
+                          "exchange": {
+                            "state": "enabled"
+                          },
+                          "teams": {
+                            "state": "enabled"
+                          }
+                        },
+                        "tenantId": "[subscription().tenantId]"
                       }
                     }
                   ]
