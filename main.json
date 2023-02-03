@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.6.61914",
-      "templateHash": "13144238399183465884"
+      "templateHash": "17822719659696650473"
     }
   },
   "parameters": {
@@ -122,7 +122,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.6.61914",
-              "templateHash": "2734318340574809695"
+              "templateHash": "3466407324999014514"
             }
           },
           "parameters": {
@@ -152,115 +152,7 @@
                     "_generator": {
                       "name": "bicep",
                       "version": "0.14.6.61914",
-                      "templateHash": "10588334753756287867"
-                    }
-                  },
-                  "parameters": {
-                    "workspaceName": {
-                      "type": "string"
-                    },
-                    "ruleEnabled": {
-                      "type": "bool",
-                      "defaultValue": true
-                    },
-                    "queryFrequency": {
-                      "type": "string",
-                      "defaultValue": "PT5M"
-                    },
-                    "queryPeriod": {
-                      "type": "string",
-                      "defaultValue": "PT24H"
-                    },
-                    "severity": {
-                      "type": "string",
-                      "defaultValue": "High",
-                      "allowedValues": [
-                        "High",
-                        "Medium",
-                        "Low",
-                        "Informational"
-                      ]
-                    },
-                    "suppressionEnabled": {
-                      "type": "bool",
-                      "defaultValue": false
-                    },
-                    "suppressionDuration": {
-                      "type": "string",
-                      "defaultValue": "PT1H"
-                    },
-                    "triggerOperator": {
-                      "type": "string",
-                      "defaultValue": "GreaterThan",
-                      "allowedValues": [
-                        "Equal",
-                        "GreaterThan",
-                        "LessThan",
-                        "NotEqual"
-                      ]
-                    },
-                    "triggerThreshold": {
-                      "type": "int",
-                      "defaultValue": 0
-                    }
-                  },
-                  "variables": {
-                    "ruleDisplayName": "BICEP TEST ALERT",
-                    "ruleDescription": "BICEP test alert",
-                    "ruleQuery": "SecurityAlert | take 10",
-                    "tactics": [
-                      "InitialAccess",
-                      "Persistence"
-                    ]
-                  },
-                  "resources": [
-                    {
-                      "type": "Microsoft.SecurityInsights/alertRules",
-                      "apiVersion": "2020-01-01",
-                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
-                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'), variables('ruleQuery'))]",
-                      "kind": "Scheduled",
-                      "properties": {
-                        "description": "[variables('ruleDescription')]",
-                        "displayName": "[variables('ruleDisplayName')]",
-                        "enabled": "[parameters('ruleEnabled')]",
-                        "query": "[variables('ruleQuery')]",
-                        "queryFrequency": "[parameters('queryFrequency')]",
-                        "queryPeriod": "[parameters('queryPeriod')]",
-                        "severity": "[parameters('severity')]",
-                        "suppressionDuration": "[parameters('suppressionDuration')]",
-                        "suppressionEnabled": "[parameters('suppressionEnabled')]",
-                        "tactics": "[variables('tactics')]",
-                        "triggerOperator": "[parameters('triggerOperator')]",
-                        "triggerThreshold": "[parameters('triggerThreshold')]"
-                      }
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
-              "name": "analytics_demoRule2",
-              "properties": {
-                "expressionEvaluationOptions": {
-                  "scope": "inner"
-                },
-                "mode": "Incremental",
-                "parameters": {
-                  "workspaceName": {
-                    "value": "[parameters('workspaceName')]"
-                  }
-                },
-                "template": {
-                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                  "contentVersion": "1.0.0.0",
-                  "metadata": {
-                    "_generator": {
-                      "name": "bicep",
-                      "version": "0.14.6.61914",
-                      "templateHash": "4288071269367308820"
+                      "templateHash": "681659751479873428"
                     }
                   },
                   "parameters": {
@@ -315,6 +207,222 @@
                   "variables": {
                     "ruleDisplayName": "BICEP Erik",
                     "ruleDescription": "BICEP Erik",
+                    "ruleQuery": "SecurityAlert | take 10",
+                    "tactics": [
+                      "InitialAccess",
+                      "Persistence"
+                    ]
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/alertRules",
+                      "apiVersion": "2020-01-01",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'))]",
+                      "kind": "Scheduled",
+                      "properties": {
+                        "description": "[variables('ruleDescription')]",
+                        "displayName": "[variables('ruleDisplayName')]",
+                        "enabled": "[parameters('ruleEnabled')]",
+                        "query": "[variables('ruleQuery')]",
+                        "queryFrequency": "[parameters('queryFrequency')]",
+                        "queryPeriod": "[parameters('queryPeriod')]",
+                        "severity": "[parameters('severity')]",
+                        "suppressionDuration": "[parameters('suppressionDuration')]",
+                        "suppressionEnabled": "[parameters('suppressionEnabled')]",
+                        "tactics": "[variables('tactics')]",
+                        "triggerOperator": "[parameters('triggerOperator')]",
+                        "triggerThreshold": "[parameters('triggerThreshold')]"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "analytics_demoRule2",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "3824237730294642037"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    },
+                    "ruleEnabled": {
+                      "type": "bool",
+                      "defaultValue": true
+                    },
+                    "queryFrequency": {
+                      "type": "string",
+                      "defaultValue": "PT5M"
+                    },
+                    "queryPeriod": {
+                      "type": "string",
+                      "defaultValue": "PT24H"
+                    },
+                    "severity": {
+                      "type": "string",
+                      "defaultValue": "High",
+                      "allowedValues": [
+                        "High",
+                        "Medium",
+                        "Low",
+                        "Informational"
+                      ]
+                    },
+                    "suppressionEnabled": {
+                      "type": "bool",
+                      "defaultValue": false
+                    },
+                    "suppressionDuration": {
+                      "type": "string",
+                      "defaultValue": "PT1H"
+                    },
+                    "triggerOperator": {
+                      "type": "string",
+                      "defaultValue": "GreaterThan",
+                      "allowedValues": [
+                        "Equal",
+                        "GreaterThan",
+                        "LessThan",
+                        "NotEqual"
+                      ]
+                    },
+                    "triggerThreshold": {
+                      "type": "int",
+                      "defaultValue": 0
+                    }
+                  },
+                  "variables": {
+                    "ruleDisplayName": "egkallerdeg1+BICEP Erik",
+                    "ruleDescription": "egkallerdeg10BICEP Erik",
+                    "ruleQuery": "SecurityAlert | take 110",
+                    "tactics": [
+                      "InitialAccess",
+                      "Persistence"
+                    ]
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/alertRules",
+                      "apiVersion": "2020-01-01",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'))]",
+                      "kind": "Scheduled",
+                      "properties": {
+                        "description": "[variables('ruleDescription')]",
+                        "displayName": "[variables('ruleDisplayName')]",
+                        "enabled": "[parameters('ruleEnabled')]",
+                        "query": "[variables('ruleQuery')]",
+                        "queryFrequency": "[parameters('queryFrequency')]",
+                        "queryPeriod": "[parameters('queryPeriod')]",
+                        "severity": "[parameters('severity')]",
+                        "suppressionDuration": "[parameters('suppressionDuration')]",
+                        "suppressionEnabled": "[parameters('suppressionEnabled')]",
+                        "tactics": "[variables('tactics')]",
+                        "triggerOperator": "[parameters('triggerOperator')]",
+                        "triggerThreshold": "[parameters('triggerThreshold')]"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "analytics_baseline",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.6.61914",
+                      "templateHash": "16085116520380325457"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    },
+                    "ruleEnabled": {
+                      "type": "bool",
+                      "defaultValue": true
+                    },
+                    "queryFrequency": {
+                      "type": "string",
+                      "defaultValue": "PT5M"
+                    },
+                    "queryPeriod": {
+                      "type": "string",
+                      "defaultValue": "PT24H"
+                    },
+                    "severity": {
+                      "type": "string",
+                      "defaultValue": "High",
+                      "allowedValues": [
+                        "High",
+                        "Medium",
+                        "Low",
+                        "Informational"
+                      ]
+                    },
+                    "suppressionEnabled": {
+                      "type": "bool",
+                      "defaultValue": false
+                    },
+                    "suppressionDuration": {
+                      "type": "string",
+                      "defaultValue": "PT1H"
+                    },
+                    "triggerOperator": {
+                      "type": "string",
+                      "defaultValue": "GreaterThan",
+                      "allowedValues": [
+                        "Equal",
+                        "GreaterThan",
+                        "LessThan",
+                        "NotEqual"
+                      ]
+                    },
+                    "triggerThreshold": {
+                      "type": "int",
+                      "defaultValue": 0
+                    }
+                  },
+                  "variables": {
+                    "ruleDisplayName": "wejahfnriaefkBICEP Erik",
+                    "ruleDescription": "asijdhfiasdfBICEP Erik",
                     "ruleQuery": "SecurityAlert | take 100",
                     "tactics": [
                       "InitialAccess",
@@ -326,7 +434,7 @@
                       "type": "Microsoft.SecurityInsights/alertRules",
                       "apiVersion": "2020-01-01",
                       "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
-                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'), variables('ruleQuery'))]",
+                      "name": "[guid(subscription().id, resourceGroup().id, parameters('workspaceName'), variables('ruleDisplayName'))]",
                       "kind": "Scheduled",
                       "properties": {
                         "description": "[variables('ruleDescription')]",

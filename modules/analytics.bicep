@@ -17,3 +17,10 @@ module demoRule2 './analytics/BicepruleErik.bicep' = {
     workspaceName: workspaceName
  }
 }
+
+module demoRule3 './analytics/demoRule2.bicep' = {
+  name: 'analytics_baseline'
+  params: {
+    workspaceName: workspaceName
+  }
+}

@@ -27,9 +27,9 @@ param triggerOperator string = 'GreaterThan'
 param triggerThreshold int = 0
 
 
-var ruleDisplayName = 'BICEP Erik'
-var ruleDescription = 'BICEP Erik'
-var ruleQuery = 'SecurityAlert | take 10'
+var ruleDisplayName = 'wejahfnriaefkBICEP Erik'
+var ruleDescription = 'asijdhfiasdfBICEP Erik'
+var ruleQuery = 'SecurityAlert | take 100'
 var tactics = [
   'InitialAccess'
   'Persistence'  

@@ -27,9 +27,9 @@ param triggerOperator string = 'GreaterThan'
 param triggerThreshold int = 0
 
 
-var ruleDisplayName = 'BICEP Erik'
-var ruleDescription = 'BICEP Erik'
-var ruleQuery = 'SecurityAlert | take 100'
+var ruleDisplayName = 'egkallerdeg1+BICEP Erik'
+var ruleDescription = 'egkallerdeg10BICEP Erik'
+var ruleQuery = 'SecurityAlert | take 110'
 var tactics = [
   'InitialAccess'
   'Persistence'  
@@ -41,7 +41,7 @@ resource LogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10
 
 resource analytics_demoRule 'Microsoft.SecurityInsights/alertRules@2020-01-01' = {
   kind: 'Scheduled'
-  name: guid(subscription().id, resourceGroup().id, workspaceName, ruleDisplayName, ruleQuery)
+  name: guid(subscription().id, resourceGroup().id, workspaceName, ruleDisplayName)
   scope: LogAnalyticsWorkspace
   properties: {
     description: ruleDescription
