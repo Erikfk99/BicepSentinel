@@ -24,8 +24,8 @@ module demoRule3 './analytics/demoRule2.bicep' = {
     workspaceName: workspaceName
   }
 }
-module analytics_temp './analytics/analyticTemplate.bicep' = {
-  name: 'analytics_temp'
+module randomAlert './analytics/analyticruletestSimen.bicep' = {
+  name: 'randomAlert'
   params: {
     workspaceName: workspaceName
   }
