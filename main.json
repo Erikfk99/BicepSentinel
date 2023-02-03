@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.6.61914",
-      "templateHash": "1179013790073905260"
+      "templateHash": "10545541995174869727"
     }
   },
   "parameters": {
@@ -122,7 +122,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.6.61914",
-              "templateHash": "15541129525331841053"
+              "templateHash": "10055059867511065946"
             }
           },
           "parameters": {
@@ -476,7 +476,7 @@
                     "_generator": {
                       "name": "bicep",
                       "version": "0.14.6.61914",
-                      "templateHash": "15679080957906040121"
+                      "templateHash": "3212010895277782208"
                     }
                   },
                   "parameters": {
@@ -492,62 +492,40 @@
                       "name": "968358d6-6af8-49bb-aaa4-187b3067fb95",
                       "kind": "Scheduled",
                       "properties": {
-                        "alertRuleTemplateName": "968358d6-6af8-49bb-aaa4-187b3067fb95",
-                        "customDetails": {},
-                        "description": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').description]",
                         "displayName": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').displayName]",
-                        "entityMappings": [
-                          {
-                            "entityType": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').entityMappings[0].entityType]",
-                            "fieldMappings": [
-                              {
-                                "columnName": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').entityMappings[0].fieldMappings[0].columnName]",
-                                "identifier": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').entityMappings[0].fieldMappings[0].identifier]"
-                              }
-                            ]
-                          }
-                        ],
-                        "eventGroupingSettings": {
-                          "aggregationKind": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').eventGroupingSettings.aggregationKind]"
-                        },
-                        "incidentConfiguration": {
-                          "createIncident": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.createIncident]",
-                          "groupingConfiguration": {
-                            "enabled": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.enabled]",
-                            "groupByAlertDetails": [
-                              "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.groupByAlertDetails[0]]"
-                            ],
-                            "groupByCustomDetails": [
-                              "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.groupByCustomDetails[0]]"
-                            ],
-                            "groupByEntities": [
-                              "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.groupByEntities[0]]"
-                            ],
-                            "lookbackDuration": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.lookbackDuration]",
-                            "matchingMethod": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.matchingMethod]",
-                            "reopenClosedIncident": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').incidentConfiguration.groupingConfiguration.reopenClosedIncident]"
-                          }
-                        },
+                        "description": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').description]",
+                        "severity": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').severity]",
+                        "enabled": true,
                         "query": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').query]",
                         "queryFrequency": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').queryFrequency]",
                         "queryPeriod": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').queryPeriod]",
-                        "sentinelEntitiesMappings": [
-                          {
-                            "columnName": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').sentinelEntitiesMappings[0].columnName]"
-                          }
-                        ],
-                        "severity": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').severity]",
-                        "suppressionDuration": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').suppressionDuration]",
-                        "suppressionEnabled": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').suppressionEnabled]",
-                        "tactics": [
-                          "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').tactics[0]]"
-                        ],
-                        "techniques": [
-                          "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').techniques[0]]"
-                        ],
-                        "templateVersion": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').templateVersion]",
                         "triggerOperator": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').triggerOperator]",
-                        "triggerThreshold": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').triggerThreshold]"
+                        "triggerThreshold": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').triggerThreshold]",
+                        "suppressionDuration": "PT5H",
+                        "suppressionEnabled": false,
+                        "tactics": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').tactics]",
+                        "techniques": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').techniques]",
+                        "alertRuleTemplateName": "968358d6-6af8-49bb-aaa4-187b3067fb95",
+                        "incidentConfiguration": {
+                          "createIncident": true,
+                          "groupingConfiguration": {
+                            "enabled": false,
+                            "reopenClosedIncident": false,
+                            "lookbackDuration": "PT5H",
+                            "matchingMethod": "AllEntities",
+                            "groupByEntities": [],
+                            "groupByAlertDetails": [],
+                            "groupByCustomDetails": []
+                          }
+                        },
+                        "eventGroupingSettings": {
+                          "aggregationKind": "SingleAlert"
+                        },
+                        "alertDetailsOverride": null,
+                        "customDetails": null,
+                        "entityMappings": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').entityMappings]",
+                        "sentinelEntitiesMappings": null,
+                        "templateVersion": "[reference(extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), 'Microsoft.SecurityInsights/alertRuleTemplates', '968358d6-6af8-49bb-aaa4-187b3067fb95'), '2022-12-01-preview').version]"
                       }
                     }
                   ]

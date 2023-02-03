@@ -31,6 +31,7 @@ module AnalyticRules './modules/analytics.bicep' = {
   
 }
 
+// Deoply connectors
 module Connectors './modules/connectors.bicep' = {
   name: 'demoConnector'
   scope: rg
@@ -38,3 +39,5 @@ module Connectors './modules/connectors.bicep' = {
     workspaceName: Sentinel.outputs.WorkspaceName
   }
 }
+
+
