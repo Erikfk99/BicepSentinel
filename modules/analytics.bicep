@@ -31,3 +31,9 @@ module randomAlert './analytics/analyticruletestSimen.bicep' = {
   }
 }
 
+module CreatedAndDeleted './analytics/CreatedAndDeleted.bicep' = {
+  name: 'CreatedAndDeleted'
+  params: {
+    workspaceName: workspaceName
+  }
+}
