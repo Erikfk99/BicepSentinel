@@ -5,6 +5,7 @@ resource LogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10
   name: workspaceName
 }
 
+//This enables Azure Active directory Identity Protection, Microsoft 365 Defender and Microsoft Defender for Cloud
 resource symbolicname 'Microsoft.SecurityInsights/dataConnectors@2022-12-01-preview' = {
   name: 'AzureActiveDirectory'
   kind: 'AzureActiveDirectory'
