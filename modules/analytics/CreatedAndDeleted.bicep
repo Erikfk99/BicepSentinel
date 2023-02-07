@@ -14,7 +14,7 @@ resource templateAlert 'Microsoft.SecurityInsights/alertRuleTemplates@2022-12-01
 }
 
 
-
+// Account Created and Deleted in Short Timeframe
 resource randomAlert 'Microsoft.SecurityInsights/alertRules@2022-12-01-preview' = {
   name: templateAlert.name
   scope: LogAnalyticsWorkspace
