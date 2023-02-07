@@ -6,12 +6,18 @@ resource LogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10
 }
 
 resource symbolicname 'Microsoft.SecurityInsights/dataConnectors@2022-12-01-preview' = {
-  name: 'AzureActiveDirectory'
-  kind: 'AzureActiveDirectory'
+  name: 'Office365'
+  kind: 'Office365'
   properties: {
       dataTypes: {
-        alerts: { 
+        sharePoint: { 
           state: 'enabled'
+        }
+        exchange: {
+            state: 'enabled'
+        }
+        teams: {
+            state: 'enabled'
         }
     }
     tenantId: subscription().tenantId
