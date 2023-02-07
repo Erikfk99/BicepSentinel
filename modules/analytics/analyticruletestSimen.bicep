@@ -14,7 +14,6 @@ resource templateAlert 'Microsoft.SecurityInsights/alertRuleTemplates@2022-12-01
 }
 
 
-
 resource randomAlert 'Microsoft.SecurityInsights/alertRules@2022-12-01-preview' = {
   name: templateAlert.name
   scope: LogAnalyticsWorkspace
@@ -56,3 +55,6 @@ resource randomAlert 'Microsoft.SecurityInsights/alertRules@2022-12-01-preview' 
     templateVersion: templateAlert.properties.version
   }
 }
+
+
+
