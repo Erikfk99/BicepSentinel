@@ -18,12 +18,6 @@ module demoRule2 './analytics/BicepruleErik.bicep' = {
  }
 }
 
-module demoRule3 './analytics/demoRule2.bicep' = {
-  name: 'analytics_baseline'
-  params: {
-    workspaceName: workspaceName
-  }
-}
 module randomAlert './analytics/analyticruletestSimen.bicep' = {
   name: 'randomAlert'
   params: {

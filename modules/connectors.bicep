@@ -16,3 +16,11 @@ module demo3 './connectors/AzureActiveDirectory.bicep' = {
     workspaceName: workspaceName
   }
 }
+
+
+module demo4 './connectors/microsoftDefenderForCloudApps.bicep' = {
+  name: 'microsoftDefenderForCloudApps'
+  params: {
+    workspaceName: workspaceName
+  }
+}

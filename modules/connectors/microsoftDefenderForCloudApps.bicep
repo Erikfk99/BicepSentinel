@@ -5,13 +5,17 @@ resource LogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10
   name: workspaceName
 }
 
-//This enables Azure Active directory Identity Protection and Microsoft 365 Defender
+//Legger til Microsoft Defender for Cloud Apps data connector
 resource symbolicname2 'Microsoft.SecurityInsights/dataConnectors@2022-12-01-preview' = {
-  name: 'AzureActiveDirectory'
-  kind: 'AzureActiveDirectory'
+  name: 'MicrosoftCloudAppSecurity'
+  kind: 'MicrosoftCloudAppSecurity'
   properties: {
       dataTypes: {
         alerts: { 
+          state: 'enabled'
+        }
+        
+        discoveryLogs: { 
           state: 'enabled'
         }
     }
@@ -20,3 +24,4 @@ resource symbolicname2 'Microsoft.SecurityInsights/dataConnectors@2022-12-01-pre
   scope: LogAnalyticsWorkspace
   // For remaining properties, see dataConnectors objects
 }
+
