@@ -1,7 +1,7 @@
 param workspaceName string 
 
 
-
+//Office 365
 module demo2 './connectors/Office365.bicep' = {
   name: 'office365'
   params: {
@@ -9,7 +9,7 @@ module demo2 './connectors/Office365.bicep' = {
   }
 }
 
-
+//Azure Active directory Identity Protection and Microsoft 365 Defender
 module demo3 './connectors/AzureActiveDirectory.bicep' = {
   name: 'AzureActiveDirectory'
   params: {
@@ -17,10 +17,28 @@ module demo3 './connectors/AzureActiveDirectory.bicep' = {
   }
 }
 
-
+//Microsoft Defender for Cloud Apps
 module demo4 './connectors/microsoftDefenderForCloudApps.bicep' = {
   name: 'microsoftDefenderForCloudApps'
   params: {
     workspaceName: workspaceName
   }
 }
+
+
+//Microsoft Defender for Cloud
+module demo5 './connectors/MicrosoftDefenderforCloud.bicep' = {
+  name: 'MicrosoftDefenderforCloud'
+  params: {
+    workspaceName: workspaceName
+  }
+}
+
+
+//MicrosoftDefenderAdvancedThreatProtection, doesn't work
+//module demo6 './connectors/MicrosoftDefenderAdvancedThreatProtection.bicep' = {
+//  name: 'MicrosoftDefenderAdvancedThreatProtection'
+//  params: {
+//    workspaceName: workspaceName
+//  }
+//}

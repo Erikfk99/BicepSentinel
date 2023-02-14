@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.46.61228",
-      "templateHash": "12056933660075923180"
+      "templateHash": "13468470553371818818"
     }
   },
   "parameters": {
@@ -45,7 +45,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.46.61228",
-              "templateHash": "17924457480846140510"
+              "templateHash": "5651309478690278908"
             }
           },
           "parameters": {
@@ -54,7 +54,7 @@
             }
           },
           "variables": {
-            "workspaceName": "Sentinel-test-lab"
+            "workspaceName": "Sentinel-test"
           },
           "resources": [
             {
@@ -80,7 +80,7 @@
               "plan": {
                 "publisher": "Microsoft",
                 "product": "OMSGallery/SecurityInsights",
-                "name": "SecurityInsights(sentinel-test-lab)",
+                "name": "SecurityInsights(Sentinel-test)",
                 "promotionCode": ""
               },
               "dependsOn": [
@@ -531,7 +531,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.46.61228",
-              "templateHash": "14053187246425405592"
+              "templateHash": "1291238603928066015"
             }
           },
           "parameters": {
@@ -561,7 +561,7 @@
                     "_generator": {
                       "name": "bicep",
                       "version": "0.14.46.61228",
-                      "templateHash": "9016357154130853322"
+                      "templateHash": "5025051090155566073"
                     }
                   },
                   "parameters": {
@@ -585,7 +585,7 @@
                             "state": "enabled"
                           },
                           "teams": {
-                            "state": "enabled"
+                            "state": "disabled"
                           }
                         },
                         "tenantId": "[subscription().tenantId]"
@@ -690,6 +690,55 @@
                           }
                         },
                         "tenantId": "[subscription().tenantId]"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "MicrosoftDefenderforCloud",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.46.61228",
+                      "templateHash": "2081373255936923817"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/dataConnectors",
+                      "apiVersion": "2022-12-01-preview",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "MicrosoftDefenderforCloud",
+                      "kind": "AzureSecurityCenter",
+                      "properties": {
+                        "dataTypes": {
+                          "alerts": {
+                            "state": "enabled"
+                          }
+                        },
+                        "subscriptionId": "[subscription().subscriptionId]"
                       }
                     }
                   ]

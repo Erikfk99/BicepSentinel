@@ -5,23 +5,18 @@ resource LogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10
   name: workspaceName
 }
 
-//Legger til Microsoft Defender for Cloud Apps data connector
-resource symbolicname4 'Microsoft.SecurityInsights/dataConnectors@2022-12-01-preview' = {
-  name: 'MicrosoftCloudAppSecurity'
-  kind: 'MicrosoftCloudAppSecurity'
+//Microsoft Defenderfor Cloud
+resource symbolicname3 'Microsoft.SecurityInsights/dataConnectors@2022-12-01-preview' = {
+  name: 'MicrosoftDefenderforCloud'
+  kind: 'AzureSecurityCenter'
   properties: {
       dataTypes: {
         alerts: { 
           state: 'enabled'
         }
-        
-        discoveryLogs: { 
-          state: 'enabled'
-        }
     }
-    tenantId: subscription().tenantId
+    subscriptionId: subscription().subscriptionId
   }
   scope: LogAnalyticsWorkspace
   // For remaining properties, see dataConnectors objects
 }
-
