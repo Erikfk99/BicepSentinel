@@ -42,3 +42,20 @@ module demo5 './connectors/MicrosoftDefenderforCloud.bicep' = {
 //    workspaceName: workspaceName
 //  }
 //}
+
+// UEBA ERIK 
+// UEBA ERIK 
+module EntityAnalytics './connectors/UEBA/EntityAnalytics.bicep'={
+  name: 'EntityAnalytics'
+  params: {
+    workspaceName: workspaceName
+  }
+}
+
+module Ueba './connectors/UEBA/UEBA.bicep'={
+  name: 'Ueba'
+  params: {
+    workspaceName: workspaceName
+  }
+}
+

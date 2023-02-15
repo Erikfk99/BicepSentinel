@@ -23,7 +23,7 @@ resource LogAnalyticsSolution 'Microsoft.OperationsManagement/solutions@2015-11-
   plan: {
     publisher: 'Microsoft'
     product: 'OMSGallery/SecurityInsights'
-    name: 'SecurityInsights(Sentinel-test)'
+    name: 'SecurityInsights(${LogAnalyticsWorkspace.name})'
     promotionCode: ''
   }
 }

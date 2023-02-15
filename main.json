@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.46.61228",
-      "templateHash": "13468470553371818818"
+      "templateHash": "14964258752795630386"
     }
   },
   "parameters": {
@@ -531,7 +531,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.46.61228",
-              "templateHash": "1291238603928066015"
+              "templateHash": "7356000948564910870"
             }
           },
           "parameters": {
@@ -561,7 +561,7 @@
                     "_generator": {
                       "name": "bicep",
                       "version": "0.14.46.61228",
-                      "templateHash": "5025051090155566073"
+                      "templateHash": "9016357154130853322"
                     }
                   },
                   "parameters": {
@@ -585,7 +585,7 @@
                             "state": "enabled"
                           },
                           "teams": {
-                            "state": "disabled"
+                            "state": "enabled"
                           }
                         },
                         "tenantId": "[subscription().tenantId]"
@@ -739,6 +739,101 @@
                           }
                         },
                         "subscriptionId": "[subscription().subscriptionId]"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "EntityAnalytics",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.46.61228",
+                      "templateHash": "6149092404146545860"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/settings",
+                      "apiVersion": "2022-12-01-preview",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "EntityAnalytics",
+                      "kind": "EntityAnalytics",
+                      "properties": {
+                        "entityProviders": [
+                          "AzureActiveDirectory"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-10-01",
+              "name": "Ueba",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "workspaceName": {
+                    "value": "[parameters('workspaceName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.14.46.61228",
+                      "templateHash": "13585711055199862937"
+                    }
+                  },
+                  "parameters": {
+                    "workspaceName": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.SecurityInsights/settings",
+                      "apiVersion": "2022-12-01-preview",
+                      "scope": "[format('Microsoft.OperationalInsights/workspaces/{0}', parameters('workspaceName'))]",
+                      "name": "Ueba",
+                      "kind": "Ueba",
+                      "properties": {
+                        "dataSources": [
+                          "AuditLogs",
+                          "AzureActivity",
+                          "SecurityEvent",
+                          "SigninLogs"
+                        ]
                       }
                     }
                   ]
