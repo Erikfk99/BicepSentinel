@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
        "resourceGroupName": {
-            "value": "Sentinel-test" 
+            "value": "Sentinel-BICEP" 
         },
         "location": {
             "value": "westeurope" 

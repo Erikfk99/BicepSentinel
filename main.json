@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.14.46.61228",
-      "templateHash": "14964258752795630386"
+      "templateHash": "3491184429623550721"
     }
   },
   "parameters": {
@@ -45,7 +45,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.14.46.61228",
-              "templateHash": "5651309478690278908"
+              "templateHash": "529753136629860326"
             }
           },
           "parameters": {
@@ -54,7 +54,7 @@
             }
           },
           "variables": {
-            "workspaceName": "Sentinel-test"
+            "workspaceName": "Sentinel-BICEP"
           },
           "resources": [
             {
@@ -80,7 +80,7 @@
               "plan": {
                 "publisher": "Microsoft",
                 "product": "OMSGallery/SecurityInsights",
-                "name": "SecurityInsights(Sentinel-test)",
+                "name": "[format('SecurityInsights({0})', variables('workspaceName'))]",
                 "promotionCode": ""
               },
               "dependsOn": [

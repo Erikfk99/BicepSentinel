@@ -1,6 +1,6 @@
 param location string
 
-var workspaceName = 'Sentinel-test'
+var workspaceName = 'Sentinel-BICEP'
 resource LogAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10-01' = {
   name: workspaceName
   location: location
