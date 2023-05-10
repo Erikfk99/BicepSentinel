@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.14.46.61228",
-      "templateHash": "3491184429623550721"
+      "version": "0.16.2.56959",
+      "templateHash": "14930906574935346960"
     }
   },
   "parameters": {
@@ -25,7 +25,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "module_sentinel",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "properties": {
@@ -44,8 +44,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.14.46.61228",
-              "templateHash": "529753136629860326"
+              "version": "0.16.2.56959",
+              "templateHash": "12652094918244144112"
             }
           },
           "parameters": {
@@ -102,7 +102,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "module_analytics",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "properties": {
@@ -112,7 +112,7 @@
         "mode": "Incremental",
         "parameters": {
           "workspaceName": {
-            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel'), '2020-10-01').outputs.WorkspaceName.value]"
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel'), '2022-09-01').outputs.WorkspaceName.value]"
           }
         },
         "template": {
@@ -121,8 +121,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.14.46.61228",
-              "templateHash": "6112986535962994311"
+              "version": "0.16.2.56959",
+              "templateHash": "14645626100738701883"
             }
           },
           "parameters": {
@@ -133,7 +133,7 @@
           "resources": [
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "analytics_demoRule",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -151,8 +151,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "15300483193541227151"
+                      "version": "0.16.2.56959",
+                      "templateHash": "15715535949415125188"
                     }
                   },
                   "parameters": {
@@ -241,7 +241,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "analytics_demoRule2",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -259,8 +259,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "11025113225559901999"
+                      "version": "0.16.2.56959",
+                      "templateHash": "13317137659629121129"
                     }
                   },
                   "parameters": {
@@ -349,7 +349,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "randomAlert",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -367,8 +367,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "3545718029494678088"
+                      "version": "0.16.2.56959",
+                      "templateHash": "13701357616773242211"
                     }
                   },
                   "parameters": {
@@ -426,7 +426,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "CreatedAndDeleted",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -444,8 +444,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "15896284807903782505"
+                      "version": "0.16.2.56959",
+                      "templateHash": "12091106168037675323"
                     }
                   },
                   "parameters": {
@@ -511,7 +511,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "demoConnector",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "properties": {
@@ -521,7 +521,7 @@
         "mode": "Incremental",
         "parameters": {
           "workspaceName": {
-            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel'), '2020-10-01').outputs.WorkspaceName.value]"
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('resourceGroupName')), 'Microsoft.Resources/deployments', 'module_sentinel'), '2022-09-01').outputs.WorkspaceName.value]"
           }
         },
         "template": {
@@ -530,8 +530,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.14.46.61228",
-              "templateHash": "7356000948564910870"
+              "version": "0.16.2.56959",
+              "templateHash": "6575114566398597998"
             }
           },
           "parameters": {
@@ -542,7 +542,7 @@
           "resources": [
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "office365",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -560,8 +560,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "9016357154130853322"
+                      "version": "0.16.2.56959",
+                      "templateHash": "1978723984503794285"
                     }
                   },
                   "parameters": {
@@ -597,7 +597,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "AzureActiveDirectory",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -615,8 +615,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "5234868471648250039"
+                      "version": "0.16.2.56959",
+                      "templateHash": "16173585029168512985"
                     }
                   },
                   "parameters": {
@@ -646,7 +646,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "microsoftDefenderForCloudApps",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -664,8 +664,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "15536259349306254712"
+                      "version": "0.16.2.56959",
+                      "templateHash": "16980616841620608754"
                     }
                   },
                   "parameters": {
@@ -698,7 +698,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "MicrosoftDefenderforCloud",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -716,8 +716,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "2081373255936923817"
+                      "version": "0.16.2.56959",
+                      "templateHash": "1544412390522436397"
                     }
                   },
                   "parameters": {
@@ -747,7 +747,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "EntityAnalytics",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -765,8 +765,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "6149092404146545860"
+                      "version": "0.16.2.56959",
+                      "templateHash": "12900564698350606225"
                     }
                   },
                   "parameters": {
@@ -793,7 +793,7 @@
             },
             {
               "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-10-01",
+              "apiVersion": "2022-09-01",
               "name": "Ueba",
               "properties": {
                 "expressionEvaluationOptions": {
@@ -811,8 +811,8 @@
                   "metadata": {
                     "_generator": {
                       "name": "bicep",
-                      "version": "0.14.46.61228",
-                      "templateHash": "13585711055199862937"
+                      "version": "0.16.2.56959",
+                      "templateHash": "4196870126846313124"
                     }
                   },
                   "parameters": {
